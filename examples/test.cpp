@@ -3,8 +3,7 @@
 
 int main(int argc, char *argv[])
 {
-	std::cout << "Hello world" << std::endl;	
-	editDistance editD("abc", "abd");
-	editD.calculateEditDistance();
+	editDistance editD("azced", "abcdef");
+	editD.calculateEditDistanceIterative();
 	return 0;	
 }

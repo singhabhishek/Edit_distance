@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-fPIC -Wall -g
+CFLAGS=-fPIC -g
 LDFLAGS=-shared
 SOURCES=src/edit_distance.cpp
 OBJECTS=$(SOURCES:.c=.o)
