@@ -1,2 +1,2 @@
-# Edit_distance
+# Edit distance
 Edit distance using dynamic programming
