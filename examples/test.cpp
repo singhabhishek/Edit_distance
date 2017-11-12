@@ -3,9 +3,22 @@
 
 int main(int argc, char *argv[])
 {
-	//editDistance editD("azced", "abcdef");
-	editDistance editD("Abhishek", "111Abhishek");
-	int diff = editD.calculateEditDistanceIterative();
-	std::cout << "Number of edits = " << diff << std::endl;
+	std::string s1 = "Abhishek";
+	std::string s2 = "Abhishew";
+	
+	std::cout << "Str1: " << s1 << std::endl;
+	std::cout << "Str2: " << s2 << std::endl;
+	
+	editDistance editD(s1, s2);
+	editD.startTimer();
+	int edit = editD.calculateEditDistanceIterative();
+	double time = editD.getExecutionTimeInMS();
+	std::cout << "DP::Number of edits required = " << edit << " Computed in " << time << " milliseconds" << std::endl;
+	editD.startTimer();
+	edit = editD.calculateEditDistanceRecursively(s1, s2, s1.size(), s2.size());
+	time = editD.getExecutionTimeInMS();
+	std::cout << "Greedy::Number of edits required = " << edit << " Computed in " << time << " milliseconds" << std::endl;
+	std::cout << "Edits ::" << std::endl;
+	editD.printEdits();
 	return 0;	
 }

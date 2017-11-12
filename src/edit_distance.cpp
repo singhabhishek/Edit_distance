@@ -6,7 +6,7 @@ editDistance::editDistance(std::string s1, std::string s2)
 	this->str1 = s1;
 	this->str2 = s2;
 
-	// Allocate memory for 2D memory
+	// Allocate memory for 2D matrix
 	a = new int*[this->str1.size() + 1];
 	for(unsigned int i = 0; i <= this->str1.size(); i++)
 	{
@@ -27,9 +27,6 @@ editDistance::~editDistance()
 
 int editDistance::calculateEditDistanceIterative(void)
 {
-	std::cout << "Str1: " << str1 << std::endl;
-	std::cout << "Str2: " << str2 << std::endl;
-	
 	// Set first row as 0...sizeof(str1)
 	for(unsigned int i = 0; i <= str2.size(); i++)
 		a[0][i] = i;
@@ -52,9 +49,25 @@ int editDistance::calculateEditDistanceIterative(void)
 			}
 		}
 	}
-	print2DMatrix();
-	printEdits();
+	//print2DMatrix();
+	//printEdits();
 	return a[str1.size()][str2.size()];
+}
+
+
+
+int editDistance::calculateEditDistanceRecursively(std::string s1, std::string s2, int m, int n)
+{
+	if(m == 0)
+		return n;
+	if(n == 0)
+		return m;
+	if(s1[m-1] == s2[n-1])
+		return calculateEditDistanceRecursively(s1, s2, m-1, n-1);
+	
+	return (1 + calculateMin(calculateEditDistanceRecursively(s1, s2, m-1, n), 
+			calculateEditDistanceRecursively(s1, s2, m-1, n-1),
+			calculateEditDistanceRecursively(s1, s2, m, n-1)));
 }
 
 int editDistance::calculateMin(int a, int b, int c)
@@ -107,4 +120,15 @@ void editDistance::printEdits(void)
 			j--;
 		}
 	}
+}
+
+void editDistance::startTimer(void)
+{
+	time = clock();
+}
+
+double editDistance::getExecutionTimeInMS(void)
+{
+	time = clock() - time;
+	return ((double)time * 1000)/CLOCKS_PER_SEC;
 }
