@@ -2,14 +2,13 @@
 #define EDIT_DISTANCE_H
 #include <iostream>
 #include <string>
-#define MAX_LEN 7
 
 class editDistance
 {
 	public:
 		editDistance(std::string s1, std::string s2);
 		~editDistance();
-		void calculateEditDistanceIterative(void);
+		int calculateEditDistanceIterative(void);
 	private:
 		int calculateMin(int a, int b, int c);
 		void printEdits(void);

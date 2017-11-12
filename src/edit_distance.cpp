@@ -6,6 +6,7 @@ editDistance::editDistance(std::string s1, std::string s2)
 	this->str1 = s1;
 	this->str2 = s2;
 
+	// Allocate memory for 2D memory
 	a = new int*[this->str1.size() + 1];
 	for(unsigned int i = 0; i <= this->str1.size(); i++)
 	{
@@ -16,6 +17,7 @@ editDistance::editDistance(std::string s1, std::string s2)
 
 editDistance::~editDistance()
 {
+	// Delete Memory
 	for(unsigned int i = 0; i <= this->str1.size(); i++)
 	{
 		delete a[i];
@@ -23,7 +25,7 @@ editDistance::~editDistance()
 	delete a;
 }
 
-void editDistance::calculateEditDistanceIterative(void)
+int editDistance::calculateEditDistanceIterative(void)
 {
 	std::cout << "Str1: " << str1 << std::endl;
 	std::cout << "Str2: " << str2 << std::endl;
@@ -52,6 +54,7 @@ void editDistance::calculateEditDistanceIterative(void)
 	}
 	print2DMatrix();
 	printEdits();
+	return a[str1.size()][str2.size()];
 }
 
 int editDistance::calculateMin(int a, int b, int c)
@@ -68,7 +71,7 @@ void editDistance::print2DMatrix(void)
 	{
 		for(unsigned int j = 1; j <= str2.size(); j++)
 		{
-			std::cout << a[i][j] << " ";
+			std::cout << a[i][j] << "\t";
 		}
 		std::cout << std::endl;
 	}
@@ -100,7 +103,7 @@ void editDistance::printEdits(void)
 		}
 		else if(a[i][j] == (a[i][j-1] + 1))
 		{
-			std::cout << "Delete " << str2[j-1] << " in str1"<< std::endl;
+			std::cout << "Add " << str2[j-1] << " in str1"<< std::endl;
 			j--;
 		}
 	}
