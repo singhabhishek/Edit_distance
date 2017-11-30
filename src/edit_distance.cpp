@@ -67,7 +67,6 @@ int editDistance::calculateEditDistanceRecursively(std::string s1, std::string s
 	if(s1[m-1] == s2[n-1])
 		return calculateEditDistanceRecursively(s1, s2, m-1, n-1);
 
-	std::cout << "1";
 	return (1 + calculateMin(calculateEditDistanceRecursively(s1, s2, m-1, n), 
 			calculateEditDistanceRecursively(s1, s2, m-1, n-1),
 			calculateEditDistanceRecursively(s1, s2, m, n-1)));

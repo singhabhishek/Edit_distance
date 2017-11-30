@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-fPIC -g
+CFLAGS=-fPIC -g -std=c++11
 LDFLAGS=-shared
 SOURCES=src/edit_distance.cpp
 OBJECTS=$(SOURCES:.c=.o)
@@ -21,4 +21,4 @@ $(TARGET_LIB): $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $@ $(LDFLAGS)
 
 clean:
-	rm -rf src/*.o examples/*.o test compare_dna_sequence *.so
+	rm -rf src/*.o examples/*.o test compare_dna_sequence *.so output.csv
