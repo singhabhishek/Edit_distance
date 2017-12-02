@@ -21,4 +21,4 @@ $(TARGET_LIB): $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $@ $(LDFLAGS)
 
 clean:
-	rm -rf src/*.o examples/*.o test compare_dna_sequence *.so output.csv
+	rm -rf src/*.o examples/*.o test compare_dna_sequence *.so *.csv

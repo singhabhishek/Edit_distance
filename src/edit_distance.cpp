@@ -107,7 +107,7 @@ void editDistance::printEdits(void)
 		}
 		else if(a[i][j] == (a[i-1][j-1] + 1))
 		{
-			std::cout << "Replace " << str2[j-1] << " With " << str1[i-1] << std::endl;
+			std::cout << "Replace " << str1[i-1] << " With " << str2[j-1] << std::endl;
 			i--;
 			j--;
 		}
@@ -122,6 +122,17 @@ void editDistance::printEdits(void)
 			j--;
 		}
 	}
+	while(j > 0)
+	{
+			std::cout << "Add " << str2[j-1] << " in str1"<< std::endl;
+			j--;
+	}
+	while(i > 0)
+	{
+			std::cout << "Delete " << str1[i-1] << " in str1"<< std::endl;
+			i--;
+	}
+
 }
 
 void editDistance::startTimer(void)
